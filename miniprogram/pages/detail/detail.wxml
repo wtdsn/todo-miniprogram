@@ -1,0 +1,26 @@
+<view class="detail-con">
+  <input class="input" type="text" placeholder="输入待办事项内容" value="{{ taskItem.task }}" />
+  <view class="shadow-wrapper">
+    <view class="dead-line" bind:tap="handleCalendar">
+      截止日期
+      <view class="right-p">
+        <view class="text">{{ taskItem.deadline }}</view>
+        <view class="more"></view>
+      </view>
+    </view>
+  </view>
+  <view class="shadow-wrapper">
+    <view class="priority" bind:tap="handleCascader">
+      优先级
+      <view class="right-p">
+        <view class="text">{{ taskItem.priority }}</view>
+        <view class="more"></view>
+      </view>
+    </view>
+  </view>
+  <view class="sumbit-btn">提 交</view>
+  <t-calendar visible="{{dateVisible}}" bind:confirm="handleConfirmDate" />
+  <t-picker visible="{{priorityVisible}}" title="选择优先级" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange">
+    <t-picker-item options="{{options}}" />
+  </t-picker>
+</view>

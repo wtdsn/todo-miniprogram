@@ -1,0 +1,37 @@
+.todo_item {
+  border: 1px dashed #c3c3c3;
+  padding: 16rpx;
+  border-radius: 8px;
+
+  display: flex;
+
+  .info_box {
+    flex: 1;
+
+    .text {
+      .priority {
+        display: inline;
+      }
+
+      .task {
+        // 单行文本益处显示为省略号
+        width: calc(100vw - 300rpx);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        font-size: 32rpx;
+      }
+    }
+
+    .date {
+      padding-top: 4rpx;
+      font-size: 28rpx;
+      color: #666;
+    }
+  }
+
+  .operations {
+    width: 200rpx;
+  }
+}

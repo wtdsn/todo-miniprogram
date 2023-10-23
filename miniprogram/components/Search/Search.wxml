@@ -1,0 +1,6 @@
+<view class="search-con">
+  <input class="search-input" type="text" placeholder="搜索便签" value="{{ searchText }}" bindinput="handleInput" />
+  <view class="search-btn" wx:if="{{searchText}}">
+    <image class="search-icon" src="../../static/imgs/search.svg" alt=""></image>
+  </view>
+</view>

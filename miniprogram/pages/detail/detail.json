@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "增加便签",
+  "usingComponents": {
+    "t-calendar": "tdesign-miniprogram/calendar/calendar",
+    "t-picker": "tdesign-miniprogram/picker/picker",
+    "t-picker-item": "tdesign-miniprogram/picker-item/picker-item"
+  }
+}

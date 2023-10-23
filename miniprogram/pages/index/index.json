@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "todo-item": "../../components/TodoItem/TodoItem",
+    "search":"../../components/Search/Search",
+    "sort":"../../components/Sort/Sort"
+  }
+}

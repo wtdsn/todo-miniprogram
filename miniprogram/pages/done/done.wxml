@@ -1,0 +1,13 @@
+<!-- index.wxml -->
+<view class="container">
+  <!-- 页面 -->
+  <view class="main">
+    <!-- 顶部查询 & 排序 -->
+    <view class="header">
+      <search class="h-search"></search>
+      <sort class="h-sort"></sort>
+    </view>
+    <!-- 列表 -->
+    <todo-item></todo-item>
+  </view>
+</view>

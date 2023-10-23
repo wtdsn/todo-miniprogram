@@ -1,0 +1,3 @@
+<view class="sort-con">
+  <image class="sort-icon" src="../../static/imgs/sort.svg"></image>
+</view>

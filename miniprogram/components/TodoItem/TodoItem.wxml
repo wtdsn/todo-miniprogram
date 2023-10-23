@@ -1,0 +1,16 @@
+<view class="todo_item">
+  <!-- 信息 -->
+  <view class="info_box">
+    <view class="text">
+      <view class="task">
+        <view class="priority {{ priorityKlass }}" wx:if="{{ todoItem.priority > 0 }}">
+          {{ priorityText }}
+        </view>
+        {{ todoItem.task }}
+      </view>
+    </view>
+    <view class="date {{priorityKlass}}">{{todoItem.deadline}}</view>
+  </view>
+  <!-- 操作 -->
+  <view class="operations"></view>
+</view>

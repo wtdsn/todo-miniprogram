@@ -1,0 +1,11 @@
+<view class="login-con">
+  <view class="logo-box">
+    <image class="logo" src="../../static/imgs/logo.svg"></image>
+    <view class="title">Todo - 待办便签</view>
+    <view class="tip">登录后方可使用</view>
+  </view>
+  <view class="login-btns">
+    <view class="btn login">微信登录</view>
+    <view class="btn no-login">暂不登录</view>
+  </view>
+</view>

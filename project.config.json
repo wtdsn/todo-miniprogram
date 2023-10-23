@@ -1,0 +1,35 @@
+{
+    "description": "项目配置文件",
+    "packOptions": {
+        "ignore": [],
+        "include": []
+    },
+    "miniprogramRoot": "",
+    "compileType": "miniprogram",
+    "projectname": "todo-miniprogram",
+    "setting": {
+        "useCompilerPlugins": [
+            "typescript",
+            "less"
+        ],
+        "babelSetting": {
+            "ignore": [],
+            "disablePlugins": [],
+            "outputPath": ""
+        },
+        "es6": true,
+        "enhance": true,
+        "minified": true,
+        "condition": true
+    },
+    "simulatorType": "wechat",
+    "simulatorPluginLibVersion": {},
+    "condition": {},
+    "srcMiniprogramRoot": "",
+    "appid": "wxe0cb5a16146c1413",
+    "libVersion": "3.1.2",
+    "editorSetting": {
+        "tabIndent": "insertSpaces",
+        "tabSize": 4
+    }
+}

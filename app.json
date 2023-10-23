@@ -1,0 +1,39 @@
+{
+    "pages": [
+        "miniprogram/pages/index/index",
+        "miniprogram/pages/login/login",
+        "miniprogram/pages/undone/undone",
+        "miniprogram/pages/done/done",
+        "miniprogram/pages/detail/detail"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#1aa",
+        "navigationBarTitleText": "待办便签",
+        "navigationBarTextStyle": "white"
+    },
+    "sitemapLocation": "sitemap.json",
+    "tabBar": {
+        "selectedColor": "#11aaaa",
+        "list": [
+            {
+                "pagePath": "miniprogram/pages/undone/undone",
+                "text": "已过期",
+                "iconPath": "miniprogram/static/imgs/tabbar/undone.png",
+                "selectedIconPath": "miniprogram/static/imgs/tabbar/undone2.png"
+            },
+            {
+                "pagePath": "miniprogram/pages/index/index",
+                "text": "任务清单",
+                "iconPath": "miniprogram/static/imgs/tabbar/all.png",
+                "selectedIconPath": "miniprogram/static/imgs/tabbar/all2.png"
+            },
+            {
+                "pagePath": "miniprogram/pages/done/done",
+                "text": "已完成",
+                "iconPath": "miniprogram/static/imgs/tabbar/done.png",
+                "selectedIconPath": "miniprogram/static/imgs/tabbar/done2.png"
+            }
+        ]
+    }
+}
