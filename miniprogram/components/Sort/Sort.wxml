@@ -1,3 +1,11 @@
 <view class="sort-con">
-  <image class="sort-icon" src="../../static/imgs/sort.svg"></image>
+  <image class="sort-icon" bind:tap="handlePopup" src="../../static/imgs/sort.svg"></image>
+
+  <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom">
+    <view class="sort-opes">
+      <slot></slot>
+      <view class="s-item">根据截止时间排序</view>
+      <view class="s-item">根据优先级排序</view>
+    </view>
+  </t-popup>
 </view>
