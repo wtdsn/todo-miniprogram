@@ -15,7 +15,7 @@
 
       .task {
         // 单行文本益处显示为省略号
-        width: calc(100vw - 300rpx);
+        width: calc(100vw - 220rpx);
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -31,7 +31,28 @@
     }
   }
 
-  .operations {
-    width: 200rpx;
+  .operations-pre {
+    width: 50rpx;
+    padding: 0 20rpx 0 0;
+
+    display: flex;
+    align-items: center;
+
+    .done .img {
+      width: 60rpx;
+      height: 60rpx;
+    }
+  }
+
+  .operations-tial {
+    width: 50rpx;
+    padding: 0 0 0 20rpx;
+    display: flex;
+    align-items: center;
+  }
+
+  .img {
+    width: 48rpx;
+    height: 48rpx;
   }
 }

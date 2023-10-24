@@ -1,4 +1,17 @@
 <view class="todo_item">
+  <!-- 前置操作 -->
+  <!-- 操作 -->
+  <view class="operations-pre">
+    <!-- 未成功，过期，可设置未已完成 -->
+    <view class="done" wx:if="{{false}}">
+      <image class="img" src="../../static/imgs/done.svg"></image>
+    </view>
+    <!-- 已经完成，可设置为未完成 -->
+    <view class="cancel" wx:else>
+      <image class="img" src="../../static/imgs/cancel.svg"></image>
+    </view>
+  </view>
+
   <!-- 信息 -->
   <view class="info_box">
     <view class="text">
@@ -12,5 +25,10 @@
     <view class="date {{priorityKlass}}">{{todoItem.deadline}}</view>
   </view>
   <!-- 操作 -->
-  <view class="operations"></view>
+  <view class="operations-tial">
+    <!-- 删除 -->
+    <view class="del">
+      <image class="img" src="../../static/imgs/del.svg"></image>
+    </view>
+  </view>
 </view>
