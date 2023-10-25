@@ -3,7 +3,7 @@
   <!-- 操作 -->
   <view class="operations-pre">
     <!-- 未成功，过期，可设置未已完成 -->
-    <view class="done" wx:if="{{false}}">
+    <view class="done" wx:if="{{true}}">
       <image class="img" src="../../static/imgs/done.svg"></image>
     </view>
     <!-- 已经完成，可设置为未完成 -->

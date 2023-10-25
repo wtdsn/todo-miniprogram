@@ -25,7 +25,9 @@
     "./**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "miniprogram_npm",
+    "typings/**/*.d.ts"
   ],
   "paths": {
     "tdesign-miniprogram/*":["./miniprogram_npm/tdesign-miniprogram/*"]
