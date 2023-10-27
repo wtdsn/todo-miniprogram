@@ -1,18 +1,27 @@
-// app.ts
-App<IAppOption>({
-  globalData: {},
-  onLaunch() {
-    // 展示本地存储能力
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+import { checkLogin } from "./miniprogram/apis/login";
 
-    // 登录
-    wx.login({
-      success: res => {
-        console.log(res.code)
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      },
-    })
-  },
-})
+// app.ts
+App({
+	globalData: {
+		taskList: [],
+	},
+	async onLaunch() {
+		wx.removeStorageSync("nolyVisited");
+		try {
+			// 本地没有 token
+			if (!wx.getStorageSync("token")) {
+				wx.navigateTo({
+					url: "/miniprogram/pages/login/login",
+				});
+				return;
+			}
+			// 有 token ，校验是否过期，没有过期则更新
+			const {
+				data: { token },
+			} = await checkLogin();
+			wx.setStorageSync("token", token);
+		} catch (err) {
+			return;
+		}
+	},
+});
