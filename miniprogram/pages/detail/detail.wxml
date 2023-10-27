@@ -1,5 +1,6 @@
 <view class="detail-con">
-  <input class="input" type="text" placeholder="输入待办事项内容" value="{{ taskItem.task }}" />
+  <input class="input" type="text" placeholder="输入待办事项内容" value="{{ taskItem.task }}" maxlength="{{64}}"
+    bindblur="handleInputTask" />
   <view class="shadow-wrapper">
     <view class="dead-line" bind:tap="handleCalendar">
       截止日期
@@ -18,7 +19,7 @@
       </view>
     </view>
   </view>
-  <view class="sumbit-btn">提 交</view>
+  <view class="sumbit-btn" bind:tap="handleSubmit">提 交</view>
   <t-calendar visible="{{dateVisible}}" bind:confirm="handleConfirmDate" />
   <t-picker visible="{{priorityVisible}}" title="选择优先级" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange">
     <t-picker-item options="{{options}}" />

@@ -2,8 +2,6 @@ Component({
   data: {
     visible: false
   },
-
-
   methods: {
     handlePopup() {
       this.setData({ visible: true });
@@ -13,6 +11,5 @@ Component({
         visible: e.detail.visible,
       });
     },
-
   },
 });
