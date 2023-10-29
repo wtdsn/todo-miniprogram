@@ -1,0 +1,34 @@
+<view class="todo_item">
+  <!-- 前置操作 -->
+  <view class="operations-pre">
+    <!-- 已经完成，可设置为未完成 -->
+    <view class="cancel" wx:if="{{taskInfo.isDone}}" bind:tap="handleCancel">
+      <image class="img" src="/miniprogram/static/imgs/cancel.svg"></image>
+    </view>
+    <!-- 未成功，过期，可设置未已完成 -->
+    <view class="done" wx:else bind:tap="handleDone">
+      <image class="img" src="/miniprogram/static/imgs/done.svg"></image>
+    </view>
+  </view>
+
+  <!-- 信息 -->
+  <view class="info_box" bind:tap="handleOpenDetail">
+    <view class="text">
+      <view class="task">
+        <view class="priority {{ priorityKlass }}" wx:if="{{ taskInfo.priority > 0 }}">
+          {{ priorityText }}
+        </view>
+        {{ taskInfo.task }}
+      </view>
+    </view>
+    <view class="date {{priorityKlass}}">{{taskInfo.deadline}}</view>
+  </view>
+
+  <!-- 后置操作 -->
+  <view class="operations-tial">
+    <!-- 删除 -->
+    <view class="del" bind:tap="handleDelTask">
+      <image class="img" src="/miniprogram/static/imgs/del.svg"></image>
+    </view>
+  </view>
+</view>

@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "todo-item": "../../components/TodoItem/TodoItem",
+    "task-list": "../../components/TaskList/TaskList",
     "search":"../../components/Search/Search",
     "sort":"../../components/Sort/Sort"
   }

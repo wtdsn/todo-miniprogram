@@ -1,7 +1,10 @@
-import { Task, IsDone, Priority } from "../../apis/task/model";
-import { queryTask } from "../../apis/task/task";
+import { Task, IsDone } from "../../apis/task/model";
+import { compareDate, formatTime } from "../../utils/date";
+import { SortType, sortTyType } from "../../components/Sort/Sort";
+import { EventHandler } from "../../utils/event";
 
 const app = getApp();
+let refreshListHandler: EventHandler;
 
 Page({
 	data: {
@@ -12,7 +15,11 @@ Page({
 		},
 		list: [] as Task[],
 		showList: [] as Task[],
+		sortType: "createTime" as SortType,
+		loading: false,
 	},
+
+	// onload , 处理增加按钮位置
 	onLoad() {
 		const that = this;
 		// 初始化增加标签按钮位置
@@ -37,41 +44,90 @@ Page({
 			},
 		});
 	},
+
+	// 加载数据
 	async onShow() {
-		let taskList = app.globalData.taskList as Task[];
+		// 订阅事件，更新列表
+		refreshListHandler = this.filterOutPageList.bind(this);
+		app.globalData.eventEmitter.on("refreshList", refreshListHandler);
 
 		// 为空时，刷新列表
-		if (taskList.length === 0) {
-			this.fetchData();
-		} else {
-			this.processList(taskList);
+		if (app.globalData.taskList.length === 0) {
+			this.setData({
+				loading: true,
+			});
+			try {
+				await app.fetchAllTask();
+			} finally {
+				this.setData({
+					loading: false,
+				});
+			}
 		}
+		this.filterOutPageList();
 	},
+
+	onHide() {
+		// 取消订阅，
+		app.globalData.eventEmitter.off("refreshList", refreshListHandler);
+	},
+
+	// 过滤出可页面可展示数据
+	filterOutPageList() {
+		const allTask = app.globalData.taskList as Task[];
+		const curDate = formatTime(new Date(), false, "-");
+		const list = allTask.filter((task) => {
+			// 如果已完成
+			if (task.isDone === IsDone.YES) return false;
+			// 过期
+			if (compareDate(curDate, task.deadline) === 1) return false;
+
+			return true;
+		});
+		this.setData({
+			list,
+			showList: [...list],
+		});
+		this.handleChangeSortType({ detail: this.data.sortType });
+	},
+
+	// 排序
+	handleChangeSortType(e: { detail: SortType }) {
+		const sortType = e.detail;
+		const sortedList = sortTyType(e.detail, this.data.list);
+		const sortedShowList = sortTyType(e.detail, this.data.showList);
+		this.setData({
+			sortType,
+			list: [...sortedList],
+			showList: [...sortedShowList],
+		});
+	},
+
+	// 查询过滤
+	filterOutSearchList({ detail }: { detail: string }) {
+		detail = detail.trim();
+
+		if (detail === "") {
+			this.setData({
+				showList: [...this.data.list],
+			});
+			return;
+		}
+
+		const reg = new RegExp(detail, "i");
+		const newShowList = this.data.showList.filter((task) => {
+			return reg.test(task.task) || reg.test(task.deadline);
+		});
+
+		this.setData({
+			showList: newShowList,
+		});
+	},
+
+	// 点击增加
 	handleClickAdd() {
-		console.log("@");
 		wx.navigateTo({
 			url: "../../../miniprogram/pages/detail/detail",
 		});
 	},
-
-	async fetchData() {
-		const {
-			data: { list },
-		} = await queryTask();
-		this.processList(list);
-	},
-
-	async processList(allList: Task[]) {
-		this.data.list = this.data.showList = allList.filter((task) => {
-			// 如果已完成
-			if (task.isDone === IsDone.YES) {
-				return false;
-			}
-			console.log(task.deadline);
-
-			return true;
-		});
-	},
-
-	async searchFilterList() {},
 });

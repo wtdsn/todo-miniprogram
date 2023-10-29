@@ -17,3 +17,21 @@ export function createTask(task: TaskCreate) {
 		data: task,
 	});
 }
+
+export function modifyTask(task: Task) {
+	return request<string>({
+		url: "/action/task/modify",
+		method: "POST",
+		data: task,
+	});
+}
+
+export function delTask(id: number) {
+	return request<string>({
+		url: "/action/task/delete",
+		method: "POST",
+		data: {
+			id,
+		},
+	});
+}

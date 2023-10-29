@@ -16,7 +16,7 @@ export interface Task {
 	priority: Priority;
 	isDone: IsDone;
 	deadline: string;
-	updateTime: number;
+	createTime: number;
 }
 
 export type TaskCreate = Pick<

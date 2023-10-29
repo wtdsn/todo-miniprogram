@@ -3,11 +3,11 @@
   <movable-area class="main">
     <!-- 顶部查询 & 排序 -->
     <view class="header">
-      <search class="h-search"></search>
-      <sort class="h-sort"></sort>
+      <search class="h-search" bind:search="filterOutSearchList"></search>
+      <sort class="h-sort" sortType="{{sortType}}" bind:changeSortType="handleChangeSortType"></sort>
     </view>
     <!-- 列表 -->
-    <todo-item></todo-item>
+    <task-list list="{{showList}}" loading="{{loading}}"></task-list>
     <!-- 添加按钮 -->
     <movable-view wx-if="{{addBtnInfo.show}}" x="{{addBtnInfo.x}}" y="{{addBtnInfo.y}}" direction="all" class="movable-add-btn">
       <view class="add-btn" bindtap="handleClickAdd">

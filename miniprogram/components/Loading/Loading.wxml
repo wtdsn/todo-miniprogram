@@ -1,0 +1,6 @@
+<view class="loading-con">
+  <div class="loading-ani">
+    <view class="loading-text">{{loadingText}}</view>
+    <image class="img" src="/miniprogram/static/imgs/pen.svg"></image>
+  </div>
+</view>

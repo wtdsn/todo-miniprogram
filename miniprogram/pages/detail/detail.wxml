@@ -1,27 +1,37 @@
 <view class="detail-con">
-  <input class="input" type="text" placeholder="输入待办事项内容" value="{{ taskItem.task }}" maxlength="{{64}}"
+  <!-- 任务内容 -->
+  <input class="input" type="text" placeholder="输入待办事项内容" value="{{ taskInfo.task }}" maxlength="{{64}}"
     bindblur="handleInputTask" />
+
+  <!-- 截止日期 -->
   <view class="shadow-wrapper">
     <view class="dead-line" bind:tap="handleCalendar">
       截止日期
       <view class="right-p">
-        <view class="text">{{ taskItem.deadline }}</view>
+        <view class="text">{{ taskInfo.deadline }}</view>
         <view class="more"></view>
       </view>
     </view>
   </view>
+  <!-- 优先级 -->
   <view class="shadow-wrapper">
     <view class="priority" bind:tap="handleCascader">
       优先级
       <view class="right-p">
-        <view class="text">{{ taskItem.priority }}</view>
+        <view class="text">{{ taskInfo.priority }}</view>
         <view class="more"></view>
       </view>
     </view>
   </view>
-  <view class="sumbit-btn" bind:tap="handleSubmit">提 交</view>
-  <t-calendar visible="{{dateVisible}}" bind:confirm="handleConfirmDate" />
-  <t-picker visible="{{priorityVisible}}" title="选择优先级" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange">
+  <!-- 提交 -->
+  <view class="sumbit-btn" bind:tap="handleSubmit">{{isModify?"修 改":"提 交"}}</view>
+
+  <!-- 日期选择器 -->
+  <t-calendar visible="{{dateVisible}}" value="{{dateVal}}" bind:change="handleConfirmDate" confirm-btn="{{null}}"
+    style="--td-calendar-active-color:#11aaaa" />
+  <!-- 优先级选择器 -->
+  <t-picker visible="{{priorityVisible}}" title="选择优先级" cancelBtn="取消" confirmBtn="确认" bindchange="onPickerChange"
+    style="--td-picker-confirm-color:#11aaaa" value="{{[taskInfo.priority]}}">
     <t-picker-item options="{{options}}" />
   </t-picker>
 </view>

@@ -18,7 +18,9 @@ Page({
 						duration: 2000,
 					});
 					setTimeout(() => {
-						wx.navigateBack();
+						wx.switchTab({
+							url: "/miniprogram/pages/index/index",
+						});
 					}, 1800);
 				} catch (err) {
 					wx.showToast({
@@ -26,7 +28,6 @@ Page({
 						icon: "error",
 						duration: 2000,
 					});
-					console.log("err", err);
 				}
 			},
 			fail: () => {

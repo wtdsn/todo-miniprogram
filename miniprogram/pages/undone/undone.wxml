@@ -4,10 +4,10 @@
   <view class="main">
     <!-- 顶部查询 & 排序 -->
     <view class="header">
-      <search class="h-search"></search>
-      <sort class="h-sort"></sort>
+      <search class="h-search" bind:search="filterOutSearchList"></search>
+      <sort class="h-sort" sortType="{{sortType}}" bind:changeSortType="handleChangeSortType"></sort>
     </view>
     <!-- 列表 -->
-    <todo-item></todo-item>
+    <task-list list="{{showList}}" loading="{{loading}}"></task-list>
   </view>
 </view>

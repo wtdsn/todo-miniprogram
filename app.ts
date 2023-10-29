@@ -1,9 +1,15 @@
+import { Task } from "./miniprogram/apis/task/model";
+import { queryTask } from "./miniprogram/apis/task/task";
+
 import { checkLogin } from "./miniprogram/apis/login";
+
+import EventEmitter from "./miniprogram/utils/event";
 
 // app.ts
 App({
 	globalData: {
-		taskList: [],
+		taskList: [] as Task[],
+		eventEmitter: new EventEmitter(),
 	},
 	async onLaunch() {
 		wx.removeStorageSync("nolyVisited");
@@ -23,5 +29,11 @@ App({
 		} catch (err) {
 			return;
 		}
+	},
+	async fetchAllTask() {
+		const {
+			data: { list },
+		} = await queryTask();
+		this.globalData.taskList = list;
 	},
 });

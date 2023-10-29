@@ -1,0 +1,37 @@
+.loading-con {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80rpx;
+
+  .loading-ani {
+    display: flex;
+    align-items: center;
+    width: 220rpx;
+    margin-left: 14rpx;
+  }
+
+  .loading-text {
+    font-size: 38rpx;
+    letter-spacing: 4rpx;
+    color: #666;
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  .img {
+    width: 50rpx;
+    height: 50rpx;
+    animation: write 0.5s linear alternate infinite;
+  }
+
+  @keyframes write {
+    from {
+      transform: translateY(-10rpx) rotate(0deg);
+    }
+
+    to {
+      transform: translateY(-10rpx) rotate(-20deg);
+    }
+  }
+}

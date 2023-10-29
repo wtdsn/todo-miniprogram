@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents":{
+    "task-item":"/miniprogram/components/TaskList/TaskItem/TaskItem",
+    "loading":"/miniprogram/components/Loading/Loading"
+  }
+}

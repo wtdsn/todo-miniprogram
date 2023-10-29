@@ -4,8 +4,16 @@
   <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom">
     <view class="sort-opes">
       <slot></slot>
-      <view class="s-item">根据截止时间排序</view>
-      <view class="s-item">根据优先级排序</view>
+      <view bind:tap="handleChanleSortType" data-value="createTime"
+        class="s-item {{sortType==='createTime'?'active':''}}">
+        根据创建时间排序
+      </view>
+      <view bind:tap="handleChanleSortType" data-value="deadline" class="s-item {{sortType==='deadline'?'active':''}}">
+        根据截止时间排序
+      </view>
+      <view bind:tap="handleChanleSortType" data-value="priority" class="s-item {{sortType==='priority'?'active':''}}">
+        根据优先级排序
+      </view>
     </view>
   </t-popup>
 </view>
